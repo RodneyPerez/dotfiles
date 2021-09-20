@@ -69,7 +69,11 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+	git
+	zsh-autosuggestions
+	zsh-syntax-highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -98,10 +102,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-export PATH="$HOME/.bin:$PATH"
-
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+alias custom_grep="grep -ir --exclude-dir=node_modules --exclude-dir=.git --exclude-dir=lib --exclude-dir=log --exclude-dir=coverage --exclude-dir=tmp --exclude=latest.dump --exclude=Gemfile.lock --exclude=review_app.dump --exclude=yarn.lock  --exclude-dir=.terraform"
 
 . $HOME/.asdf/asdf.sh
 
@@ -115,3 +116,5 @@ go_test() {
   go test $* | sed ''/PASS/s//$(printf "\033[32mPASS\033[0m")/'' | sed ''/SKIP/s//$(printf "\033[34mSKIP\033[0m")/'' | sed ''/FAIL/s//$(printf "\033[31mFAIL\033[0m")/'' | sed ''/FAIL/s//$(printf "\033[31mFAIL\033[0m")/'' | GREP_COLOR="01;33" egrep --color=always '\s*[a-zA-Z0-9\-_.]+[:][0-9]+[:]|^'
 }
 alias config='/usr/bin/git --git-dir=/Users/rodneyperez/.cfg/ --work-tree=/Users/rodneyperez'
+
+export PATH="$HOME/.bin:$PATH"
