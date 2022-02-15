@@ -13,10 +13,10 @@ ZSH_DISABLE_COMPFIX="true"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-	export ZSH="/Users/rodneyperez/.oh-my-zsh"
+	export ZSH="/Users/$(whoami)/.oh-my-zsh"
 	ZSH_THEME="robbyrussell"
 else
-  export ZSH="/home/ubuntu/.oh-my-zsh"
+	export ZSH="/home/$(whoami)/.oh-my-zsh"
   ZSH_THEME="linuxonly"
 fi
  # Set name of the theme to load --- if set to "random", it will
@@ -134,7 +134,7 @@ if [ -f '/Users/rodneyperez/Downloads/google-cloud-sdk/completion.zsh.inc' ]; th
 go_test() {
   go test $* | sed ''/PASS/s//$(printf "\033[32mPASS\033[0m")/'' | sed ''/SKIP/s//$(printf "\033[34mSKIP\033[0m")/'' | sed ''/FAIL/s//$(printf "\033[31mFAIL\033[0m")/'' | sed ''/FAIL/s//$(printf "\033[31mFAIL\033[0m")/'' | GREP_COLOR="01;33" egrep --color=always '\s*[a-zA-Z0-9\-_.]+[:][0-9]+[:]|^'
 }
-alias config='/usr/bin/git --git-dir=/Users/rodneyperez/.cfg/ --work-tree=/Users/rodneyperez'
+alias config="/usr/bin/git --git-dir=/Users/$(whoami)/.cfg/ --work-tree=/Users/$(whoami)"
 
 export PATH="$HOME/.bin:$PATH"
 # Example aliases
